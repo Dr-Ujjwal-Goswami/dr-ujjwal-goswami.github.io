@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Chemistry PhD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-gradient-1: #5a6c7d;
+            --bg-gradient-2: #6b7f92;
+            --bg-gradient-3: #7a8fa3;
+            --bg-gradient-4: #6b7f92;
+            --bg-gradient-5: #5a6c7d;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --accent-primary: #4a6fa5;
+            --accent-secondary: #5a8ab8;
+            --link-bg-1: linear-gradient(135deg, #4a6fa5, #5a7fb5);
+            --link-bg-2: linear-gradient(135deg, #5a8ab8, #6a9ac5);
+            --contact-border: #4a6fa5;
+            --shadow-color: rgba(74, 111, 165, 0.3);
+        }
+
+        body.dark-mode {
+            --bg-gradient-1: #1a1f2e;
+            --bg-gradient-2: #252d3d;
+            --bg-gradient-3: #2d3748;
+            --bg-gradient-4: #252d3d;
+            --bg-gradient-5: #1a1f2e;
+            --card-bg: rgba(45, 55, 72, 0.95);
+            --text-primary: #e2e8f0;
+            --text-secondary: #cbd5e0;
+            --accent-primary: #6b8ab8;
+            --accent-secondary: #7b9ac8;
+            --link-bg-1: linear-gradient(135deg, #3d5a7a, #4a6a8f);
+            --link-bg-2: linear-gradient(135deg, #4a6fa5, #5a7fb5);
+            --contact-border: #5a7fb5;
+            --shadow-color: rgba(74, 111, 165, 0.4);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 25%, var(--bg-gradient-3) 50%, var(--bg-gradient-4) 75%, var(--bg-gradient-5) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: background 0.3s ease;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.6s ease;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .dark-mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--link-bg-1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+			border: 4px solid var(--accent-primary);
+            border-radius: 50%;
+            background: var(--link-bg-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 48px;
+            color: white;
+			object-fit: cover;
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        h1 {
+            color: var(--text-primary);
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .title {
+            color: var(--accent-primary);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .bio {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 30px 0 15px;
+            padding-left: 10px;
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .link-card {
+            background: var(--link-bg-1);
+            border-radius: 15px;
+            padding: 18px 24px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .link-card:hover::before {
+            left: 100%;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+
+        .link-card.secondary {
+            background: var(--link-bg-2);
+        }
+
+        .link-icon {
+            font-size: 24px;
+            color: white;
+            margin-right: 20px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .link-content {
+            flex: 1;
+            color: white;
+        }
+
+        .link-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        .link-subtitle {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .link-arrow {
+            color: white;
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .contact-btn {
+            background: var(--card-bg);
+            border: 2px solid var(--contact-border);
+            color: var(--accent-primary);
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--link-bg-1);
+            color: white;
+            transform: scale(1.05);
+            border-color: transparent;
+        }
+
+        .contact-btn i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+
+            .link-card {
+                padding: 15px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="profile">
+            <img src="Ujjwal.jpg" alt="Profile Photo" class="profile-img">
+            <h1>Your Name</h1>
+            <div class="title">PhD, Organic Chemistry | Researcher</div>
+            <p class="bio">Exploring molecular frontiers in [Your Research Area]. Passionate about advancing chemical sciences and fostering scientific collaboration.</p>
+        </div>
+
+        <div class="section-title">Academic Profiles</div>
+        
+        <a href="https://scholar.google.com/citations?user=UVHCAgQAAAAJ&hl=en" class="link-card" target="_blank">
+            <i class="fas fa-graduation-cap link-icon"></i>
+            <div class="link-content">
+                <div class="link-title">Google Scholar</div>
+                <div class="link-subtitle">Publications & Citations</div>
+            </div>
+            <i class="fas fa-arrow-right link-arrow"></i>
+        </a>
+
+        <a href="https://orcid.org/0000-0001-7961-7502" class="link-card" target="_blank">
+            <i class="fab fa-orcid link-icon"></i>
+            <div class="link-content">
+                <div class="link-title">ORCID</div>
+                <div class="link-subtitle">Researcher ID & Works</div>
+            </div>
+            <i class="fas fa-arrow-right link-arrow"></i>
+        </a>
+
+        <a href="https://www.researchgate.net/profile/Ujjwal-Goswami" class="link-card" target="_blank">
+            <i class="fab fa-researchgate link-icon"></i>
+            <div class="link-content">
+                <div class="link-title">ResearchGate</div>
+                <div class="link-subtitle">Research Network</div>
+            </div>
+            <i class="fas fa-arrow-right link-arrow"></i>
+        </a>
+
+        <div class="section-title">Professional</div>
+
+        <a href="https://www.linkedin.com/in/ujjwal-jyoti-goswami-a81b97389/" class="link-card secondary" target="_blank">
+            <i class="fab fa-linkedin link-icon"></i>
+            <div class="link-content">
+                <div class="link-title">LinkedIn</div>
+                <div class="link-subtitle">Professional Network</div>
+            </div>
+            <i class="fas fa-arrow-right link-arrow"></i>
+        </a>
+
+        <a href="https://github.com/Ujjwal1604" class="link-card secondary" target="_blank">
+            <i class="fab fa-github link-icon"></i>
+            <div class="link-content">
+                <div class="link-title">GitHub</div>
+                <div class="link-subtitle">Code & Projects</div>
+            </div>
+            <i class="fas fa-arrow-right link-arrow"></i>
+        </a>
+
+        <a href="Ujjwal-Goswami_CV.pdf" class="link-card secondary" target="_blank">
+            <i class="fas fa-file-pdf link-icon"></i>
+            <div class="link-content">
+                <div class="link-title">Curriculum Vitae</div>
+                <div class="link-subtitle">Download PDF</div>
+            </div>
+            <i class="fas fa-arrow-right link-arrow"></i>
+        </a>
+
+        <div class="section-title">Connect</div>
+
+        <div class="contact-grid">
+            <a href="mailto:goswamiujjwal98@gmail.com" class="contact-btn">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+            <a href="https://wa.me/+916000135665" class="contact-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="your-website.com" class="contact-btn" target="_blank">
+                <i class="fas fa-globe"></i> Website
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
+
+        // Check for saved dark mode preference
+        const darkMode = localStorage.getItem('darkMode');
+        if (darkMode === 'enabled') {
+            body.classList.add('dark-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+    </script>
+</body>
+</html>
